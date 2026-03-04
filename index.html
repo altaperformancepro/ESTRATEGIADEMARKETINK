@@ -3,512 +3,232 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manual Mantecorp Farmasa - Ciclo 2 2026</title>
+<title>Mantecorp Farmasa - ACELERA PRO 3 (DETALHADO)</title>
 <style>
-    /* --- PALETA DE CORES SISTÊMICA --- */
     :root {
-        /* Identidade Principal */
         --mantecorp-orange: #cf6a42; 
         --mantecorp-gradient: linear-gradient(135deg, #cf6a42 0%, #a64420 100%);
-        --title-blue: #003366; /* Azul Escuro Solicitado */
-        
-        /* Cores de Categoria */
-        --color-lisador: #e67e22;     /* Laranja Vibrante */
-        --color-febre: #c0392b;       /* Vermelho Intenso */
-        --color-alergia: #8e44ad;     /* Roxo Vibrante */
-        --color-resp: #16a085;        /* Verde Teal */
-        --color-sono: #2c3e50;        /* Azul Noite */
-        
-        /* Bases */
-        --bg-page: #f0f2f5;
+        --title-blue: #003366;
+        --color-aines: #d35400;
+        --color-dor-febre: #c0392b;
+        --color-alergia: #8e44ad;
+        --color-resp: #2980b9;
+        --color-sono: #2c3e50;
+        --bg-page: #f4f7f6;
         --white: #ffffff;
-        --text-dark: #2d3436;
-        --text-light: #636e72;
     }
 
-    /* Estilos Gerais */
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        background-color: var(--bg-page);
-        color: var(--text-dark);
-        line-height: 1.5;
-        -webkit-font-smoothing: antialiased;
-    }
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: var(--bg-page); color: #333; line-height: 1.5; }
+    .main-header { background: var(--mantecorp-gradient); color: var(--white); padding: 40px 20px; text-align: center; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .dashboard-container { max-width: 1100px; margin: -20px auto 50px auto; padding: 0 15px; }
 
-    /* --- CABEÇALHO --- */
-    .main-header {
-        background: var(--mantecorp-gradient);
-        color: var(--white);
-        padding: 40px 20px 60px 20px;
-        text-align: center;
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-        box-shadow: 0 4px 20px rgba(166, 68, 32, 0.4);
-    }
-    .brand-title {
-        font-size: 2.2rem;
-        font-weight: 900;
-        text-transform: uppercase;
-        margin: 0;
-        letter-spacing: 1px;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-    .brand-subtitle {
-        font-size: 1.1rem;
-        margin-top: 10px;
-        font-weight: 400;
-        opacity: 0.95;
-    }
-
-    /* --- CONTAINER --- */
-    .dashboard-container {
-        max-width: 1000px;
-        margin: -40px auto 0 auto;
-        padding: 0 15px 60px 15px;
-        position: relative;
-        z-index: 2;
-    }
-
-    /* --- CARDS DE PRODUTO --- */
-    .product-card {
-        background: var(--white);
-        border-radius: 16px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        margin-bottom: 30px;
-        overflow: hidden;
-        border-top: 6px solid #ccc; /* Cor base substituída pelas classes de tema */
-        transition: transform 0.2s;
-    }
-    
-    /* Temas dos Cards (Cores das Bordas) */
-    .theme-lisador { border-color: var(--color-lisador); }
-    .theme-febre { border-color: var(--color-febre); }
+    .product-card { background: var(--white); border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); margin-bottom: 30px; overflow: hidden; border-top: 6px solid #ccc; }
+    .theme-aines { border-color: var(--color-aines); }
+    .theme-dor { border-color: var(--color-dor-febre); }
     .theme-alergia { border-color: var(--color-alergia); }
     .theme-resp { border-color: var(--color-resp); }
     .theme-sono { border-color: var(--color-sono); }
 
-    /* Header do Card */
-    .card-header {
-        padding: 20px 25px;
-        border-bottom: 1px solid #eee;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 10px;
-        background: #fff;
-    }
-    .card-header h2 {
-        margin: 0;
-        color: var(--title-blue); /* Título Azul Escuro */
-        font-size: 1.8rem;
-        font-weight: 800;
-        letter-spacing: -0.5px;
-        /* Flexibilidade para mobile */
-        flex: 1 1 auto; 
-    }
-    .ciclo-badge {
-        display: inline-block;
-        padding: 6px 14px;
-        border-radius: 12px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        background: #f0f0f0;
-        color: #555;
-        white-space: normal; /* Permite quebra de linha em telas muito pequenas */
-        text-align: right;
-        max-width: 100%;
-    }
-
-    /* Cores das Badges por tema */
-    .theme-lisador .ciclo-badge { background: #fff3e0; color: var(--color-lisador); }
-    .theme-febre .ciclo-badge { background: #fce4ec; color: var(--color-febre); }
-    .theme-alergia .ciclo-badge { background: #f3e5f5; color: var(--color-alergia); }
-    .theme-resp .ciclo-badge { background: #e0f2f1; color: var(--color-resp); }
-    .theme-sono .ciclo-badge { background: #eceff1; color: var(--color-sono); }
+    .card-header { padding: 20px 25px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+    .card-header h2 { margin: 0; color: var(--title-blue); font-size: 1.4rem; text-transform: uppercase; }
+    .badge-equipe { background: #f0f2f5; padding: 5px 12px; border-radius: 10px; font-size: 0.75rem; font-weight: 700; color: #555; border: 1px solid #ddd; }
 
     .card-body { padding: 25px; }
-
-    /* --- INFO TÉCNICA (Tech Specs) --- */
-    .tech-specs {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-    }
-    .spec-item {
-        background: #f8f9fa;
-        border: 1px solid #e9ecef;
-        padding: 10px 14px;
-        border-radius: 8px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #555;
-        flex: 1 1 45%; /* Ocupa metade ou tudo dependendo da tela */
-    }
-    .spec-label { display: block; font-size: 0.7rem; color: #999; text-transform: uppercase; margin-bottom: 4px;}
-
-    /* --- SEÇÕES E LISTAS --- */
-    .section-title {
-        color: var(--title-blue);
-        font-size: 1.1rem;
-        font-weight: 800;
-        margin: 25px 0 15px 0;
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-    }
-    .section-title::before {
-        content: '';
-        width: 5px;
-        height: 20px;
-        background: currentColor;
-        margin-right: 10px;
-        border-radius: 2px;
-        opacity: 0.7;
-    }
+    .section-title { font-size: 1rem; font-weight: 800; text-transform: uppercase; margin: 20px 0 10px 0; color: var(--title-blue); border-bottom: 2px solid #eee; padding-bottom: 5px; }
     
-    /* Cores dos ícones de título por tema */
-    .theme-lisador .section-title { color: var(--color-lisador); }
-    .theme-febre .section-title { color: var(--color-febre); }
-    .theme-alergia .section-title { color: var(--color-alergia); }
-    .theme-resp .section-title { color: var(--color-resp); }
-    .theme-sono .section-title { color: var(--color-sono); }
+    .highlight-box { background: #fffde7; padding: 15px; border-radius: 8px; border-left: 5px solid #fbc02d; margin: 15px 0; font-size: 0.9rem; }
+    .target-box { background: #e3f2fd; padding: 15px; border-radius: 8px; border-left: 5px solid #2196f3; margin: 15px 0; font-size: 0.9rem; }
+    .alert-box { background: #fbe9e7; padding: 15px; border-radius: 8px; border-left: 5px solid #ff5722; margin: 15px 0; font-size: 0.9rem; }
 
-    ul { padding-left: 0; list-style: none; margin-bottom: 20px; }
-    li {
-        position: relative;
-        padding-left: 25px;
-        margin-bottom: 12px;
-        font-size: 0.95rem;
-        color: #444;
-    }
-    li::before {
-        content: "➤";
-        position: absolute;
-        left: 0;
-        color: #ccc;
-        font-size: 0.8rem;
-        top: 3px;
-    }
-    li strong { color: var(--title-blue); font-weight: 700; }
-
-    /* --- BOXES ESPECIAIS --- */
-    /* Pitch de Vendas (Ouro) */
-    .sales-pitch {
-        background-color: #fffde7;
-        border-left: 5px solid #fbc02d;
-        padding: 15px;
-        border-radius: 0 8px 8px 0;
-        margin: 20px 0;
-        font-size: 0.95rem;
-    }
-    .sales-pitch-title {
-        display: block;
-        font-weight: 800;
-        color: #f57f17;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        margin-bottom: 5px;
-    }
-
-    /* Alerta (Vermelho) */
-    .alert-box {
-        background-color: #ffebee;
-        border-left: 5px solid #ef5350;
-        padding: 15px;
-        border-radius: 0 8px 8px 0;
-        color: #c62828;
-        font-size: 0.9rem;
-        margin-bottom: 20px;
-    }
-
-    /* Materiais (Cinza) */
-    .materials-box {
-        background: #f5f5f5;
-        padding: 15px;
-        border-radius: 8px;
-        font-size: 0.85rem;
-        color: #616161;
-        border: 1px solid #eee;
-    }
-    .materials-title {
-        font-weight: 800;
-        text-transform: uppercase;
-        color: #424242;
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    /* Destaques de Texto */
-    .highlight {
-        background-color: rgba(255, 235, 59, 0.3);
-        padding: 0 4px;
-        border-radius: 3px;
-        font-weight: 700;
-        color: #222;
-    }
-
-    /* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
-
-    /* Tablet (iPad Portrait e telas médias) */
-    @media (max-width: 900px) {
-        .dashboard-container {
-            padding: 0 20px 60px 20px;
-        }
-        .card-header h2 {
-            font-size: 1.6rem;
-        }
-        .spec-item {
-            flex: 1 1 40%; /* Garante que fiquem 2 por linha */
-        }
-    }
-
-    /* Mobile (Celulares) */
-    @media (max-width: 600px) {
-        .main-header {
-            padding: 30px 15px 50px 15px;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-        }
-        .brand-title {
-            font-size: 1.6rem;
-            line-height: 1.2;
-        }
-        .brand-subtitle {
-            font-size: 0.95rem;
-        }
-        .dashboard-container {
-            margin-top: -30px; /* Sobe um pouco menos */
-            padding: 0 10px 40px 10px;
-        }
-
-        /* Ajuste do Header do Card para Mobile */
-        .card-header {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 15px 20px;
-        }
-        .card-header h2 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-        }
-        .ciclo-badge {
-            text-align: left;
-            padding: 5px 10px;
-            font-size: 0.7rem;
-            width: 100%; /* Ocupa a largura total no mobile */
-            background: #f9f9f9; /* Fundo mais suave */
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        /* Tech Specs em coluna ou bloco */
-        .spec-item {
-            flex: 1 1 100%; /* 1 por linha no celular */
-        }
-
-        /* Ajuste de fontes */
-        .section-title {
-            font-size: 1rem;
-        }
-        li {
-            padding-left: 20px; /* Recuo menor */
-            font-size: 0.9rem;
-        }
-        
-        /* Ajuste boxes especiais */
-        .sales-pitch, .alert-box, .materials-box {
-            padding: 12px;
-            font-size: 0.9rem;
-        }
-    }
+    ul { list-style: none; padding: 0; margin: 0; }
+    li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.9rem; }
+    li::before { content: "•"; position: absolute; left: 0; color: var(--mantecorp-orange); font-weight: bold; }
+    
+    .materials-footer { background: #f9f9f9; padding: 15px 25px; border-top: 1px solid #eee; font-size: 0.85rem; color: #666; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 15px; }
+    .stat-item { background: #f8f9fa; padding: 10px; border-radius: 8px; text-align: center; border: 1px solid #eee; }
+    .stat-val { display: block; font-size: 1.2rem; font-weight: bold; color: var(--mantecorp-orange); }
+    .stat-label { font-size: 0.7rem; text-transform: uppercase; color: #777; }
 </style>
 </head>
 <body>
 
 <div class="main-header">
-    <div class="brand-title">Mantecorp Farmasa</div>
-    <div class="brand-subtitle">Manual Completo de Produtos - CICLO 2 2026</div>
+    <h1 style="margin:0;">MANTECORP FARMASA</h1>
+    <p style="margin:5px 0 0; opacity: 0.9; font-weight: bold;">DIRETRIZES ESTRATÉGICAS - CICLO 03 / 2026</p>
 </div>
 
 <div class="dashboard-container">
 
-    <div class="product-card theme-lisador">
+    <div class="product-card theme-aines">
         <div class="card-header">
-            <h2>LISADOR</h2>
-            <span class="ciclo-badge">Equipe: GÊNESIS | Foco: PA/PS e Clínicos</span>
+            <h2>AINES</h2>
+            <span class="badge-equipe">EQUIPE: SINERGIA</span>
         </div>
         <div class="card-body">
-            <h3 class="section-title">Estratégia e Oportunidade</h3>
+            <div class="alert-box">
+                <strong>DIAGNÓSTICO:</strong> Retração de -9% (fev/26 proj vs PA). Foco em acelerar o fechamento do trimestre para recuperação.
+            </div>
+            
+            <h3 class="section-title">MAXSULID (Aniversário 20 Anos)</h3>
             <ul>
-                <li><strong>Preparação para Dengue:</strong> Contexto epidemiológico exige antecipação de demanda em PA/PS e consultórios.</li>
-                <li><strong>Visibilidade Digital (Mevo/Memed):</strong> Pacotes garantem que o médico visualize Lisador imediatamente ao digitar <span class="highlight">"dipirona"</span> no receituário eletrônico.</li>
+                <li>Relembrar a história: pioneirismo na associação da <strong>Nimesulida com Betaciclodextrina</strong>.</li>
+                <li><strong>Ferramenta:</strong> Uso obrigatório do vídeo sobre mecanismo de ação na propaganda.</li>
             </ul>
 
-            <div class="sales-pitch">
-                <span class="sales-pitch-title">Argumento de Venda</span>
-                "Doutor, ao prescrever Dipirona no sistema, Lisador já aparece em destaque. É a segurança de uma marca de confiança com facilidade de acesso."
+            <h3 class="section-title">ECOXE vs ARCOXIA</h3>
+            <div class="stat-grid">
+                <div class="stat-item"><span class="stat-val">+0,3p.p.</span><span class="stat-label">Market Share Capturado (Fev)</span></div>
+                <div class="stat-item"><span class="stat-val">50%</span><span class="stat-label">Meta de Share até fim do ano</span></div>
             </div>
+            <ul>
+                <li><strong>Tática:</strong> Uso estratégico da planilha de mapeamento de prescritores de Arcoxia.</li>
+                <li><strong>Investimento:</strong> Focar verba em <strong>Projeto Residentes</strong> e <strong>Dia de Produto</strong>.</li>
+            </ul>
 
-            <div class="materials-box">
-                <span class="materials-title">Materiais e AGs</span>
-                AGs da família Lisador para posicionamento consistente nos diferentes pontos de contato.
-            </div>
+            <h3 class="section-title">KELAC</h3>
+            <ul>
+                <li><strong>Projeto Odonto:</strong> Aceleração máxima. "Vocês são os donos da Odontologia".</li>
+            </ul>
+        </div>
+        <div class="materials-footer">
+            <strong>Suporte:</strong> Verba de projetos como ferramenta de aceleração para fechamento do Tri.
         </div>
     </div>
 
-    <div class="product-card theme-febre">
+    <div class="product-card theme-dor">
         <div class="card-header">
-            <h2>FRANQUIA DOR E FEBRE</h2>
-            <span class="ciclo-badge">Equipe: DVS | Sazonalidade: Carnaval/Dengue</span>
+            <h2>DIPROSPAN, LISADOR E NOVOTRAM</h2>
+            <span class="badge-equipe">EQUIPE: DINAMO E SINERGIA</span>
         </div>
         <div class="card-body">
-            <div class="tech-specs">
-                <div class="spec-item"><span class="spec-label">Produtos</span>Alivium, Pratium, Hexomedine</div>
-                <div class="spec-item"><span class="spec-label">Regiões Foco</span>N/NE (Influenza/Dengue), S/SE (Crescimento)</div>
+            <h3 class="section-title">DIPROSPAN: Intesidade de Execução</h3>
+            <div class="stat-grid">
+                <div class="stat-item"><span class="stat-val">83,8%</span><span class="stat-label">Projeção Cobertura Cota</span></div>
+                <div class="stat-item"><span class="stat-val">+4,9%</span><span class="stat-label">Crescimento vs Ano Ant.</span></div>
             </div>
-
-            <h3 class="section-title">Contexto Tático: Carnaval (13 a 18/02)</h3>
             <ul>
-                <li><strong>Oportunidade:</strong> O período amplia risco de viroses respiratórias e <span class="highlight">dor de garganta</span>.</li>
-                <li><strong>Estratégia Combo:</strong> Trabalhar a combinação <strong>Alivium + Hexomedine</strong> para abordagem sistêmica e local da odinofagia.</li>
+                <li><strong>Estratégia Hypak:</strong> Apresentação exclusiva. Dinamo recebe unidade original para demonstração física. <strong>"Hypak precisa ser mostrado, não apenas falado"</strong>.</li>
+                <li><strong>Segmentação:</strong> Acelerar 1 ampola (canal indireto/giro) e 6 ampolas (clínicas de viscosuplementação).</li>
+                <li><strong>Diferenciais:</strong> Tecnologia de microcristais, polissorbato 80 e qualidade de produto referência.</li>
             </ul>
 
-            <h3 class="section-title">Diferenciais Competitivos</h3>
+            <h3 class="section-title">LISADOR (Dengue e Mevo)</h3>
             <ul>
-                <li><strong>Fórmula Limpa:</strong> Sem açúcar, sem corantes e sabor frutas. Aumenta adesão pediátrica.</li>
-                <li><strong>Alivium GC:</strong> Opção para dores inflamatórias com <span class="highlight">menor risco de hepatotoxicidade</span> versus cetoprofeno.</li>
-                <li><strong>Pratium:</strong> Segurança desde o 1º dia de vida. Recomendado nos sintomas da Dengue.</li>
-                <li><strong>Posologia:</strong> Simples, 1 gota/kg.</li>
+                <li><strong>Regiões Prioritárias:</strong> SP, GO (alerta casos graves), MG, PR, TO e RS.</li>
+                <li><strong>Mevo:</strong> Crescimento de 1.000 para 12 mil médicos. Meta: <strong>Converter molécula em marca</strong>.</li>
+                <li><strong>Lisador Muscular:</strong> Lançamento foco total. Diferenciais: Sem AINE, Sem Sono, Potência Analgésica.</li>
             </ul>
 
-            <div class="materials-box">
-                <span class="materials-title">Materiais</span>
-                Lâmina Dor de Garganta, Lâmina Sintomas da Dengue. AGs: Alivium Gotas, Alivium GC, Pratium.
+            <h3 class="section-title">NOVOTRAM</h3>
+            <ul>
+                <li>Mapear e trabalhar <strong>5 médicos potenciais</strong> prescritores de tramadol por representante.</li>
+            </ul>
+        </div>
+        <div class="materials-footer">
+            <strong>Materiais:</strong> VA atualizado, Vídeo médico, Lâmina Digital, Diprospan no Combo RX (12% no Trade).
+        </div>
+    </div>
+
+    <div class="product-card theme-dor">
+        <div class="card-header">
+            <h2>ALIVIUM E PRATIUM</h2>
+            <span class="badge-equipe">EQUIPE: DVS</span>
+        </div>
+        <div class="card-body">
+            <div class="highlight-box">
+                <strong>CONTEXTO:</strong> Pós-Carnaval e volta às aulas com aumento de Influenza e viroses. Dengue sem crescimento exponencial no momento.
             </div>
+            
+            <h3 class="section-title">ALIVIUM 100 E GC</h3>
+            <ul>
+                <li><strong>Posicionamento 100mg:</strong> Marca nº1 do médico. Primeiro analgésico de escolha em dor/febre infantil.</li>
+                <li><strong>Alivium GC:</strong> Território de inflamações (entorses, garganta, sinusites). Reduzir risco de troca no PDV.</li>
+                <li><strong>Ortopedia Infantil:</strong> Mapear clínicas pediátricas para explorar este "Oceano Azul".</li>
+            </ul>
+
+            <h3 class="section-title">PRATIUM</h3>
+            <ul>
+                <li>Ajuste de foco devido menor pressão de Dengue. Priorizar <strong>clínicas de vacinação</strong> (segurança desde o 1º dia de vida).</li>
+            </ul>
+        </div>
+        <div class="materials-footer">
+            <strong>Ações:</strong> Material comparativo de moléculas, Portfólio Infantil Digital, AGs Alivium 100/GC/Pratium.
         </div>
     </div>
 
     <div class="product-card theme-alergia">
         <div class="card-header">
-            <h2>ALERGIA</h2>
-            <span class="ciclo-badge">Alektos, Alektos Derm, Amome</span>
+            <h2>ALERGIA (Alektos e Amome)</h2>
+            <span class="badge-equipe">EQUIPE: VITA E SINERGIA</span>
         </div>
         <div class="card-body">
-            
-            <div class="sales-pitch">
-                <span class="sales-pitch-title">🎯 OPORTUNIDADE DE OURO: AMOME</span>
-                "Caminho livre! <strong>Avamys e Nasonex estão sem força de vendas!</strong> Atacar os prescritores dessas marcas com o Bloco Comparativo."
-            </div>
-
-            <h3 class="section-title">Estratégias de Ataque</h3>
+            <h3 class="section-title">ALEKTOS CPR, DERM E PED</h3>
             <ul>
-                <li><strong>Alektos CPR (20 cp):</strong> Focar na apresentação de 20 comprimidos. <span class="highlight">Blinda o receituário</span> e evita a troca por genérico no PDV.</li>
-                <li><strong>Alektos Derm:</strong> Ação para retomar crescimento: Fazer a <strong>experimentação na pele do médico</strong> na visita. "Sentir para crer" na qualidade sensorial.</li>
-                <li><strong>Alektos Ped:</strong> Apenas 10% de share. Mercado gigante para conquistar.</li>
+                <li><strong>CPR 20cp:</strong> Foco nesta apresentação para blindar receituário e evitar genérico no PDV.</li>
+                <li><strong>Alektos Derm:</strong> <strong>Experimentação obrigatória</strong> na visita. Hidratação como base para diversas doenças de pele.</li>
+                <li><strong>Alektos Ped:</strong> Mercado infantil 90% inexplorado. Dash enviado com médicos não prescritores para ataque.</li>
             </ul>
 
-            <h3 class="section-title">Mensagens Essenciais</h3>
-            <ul>
-                <li><strong>Alektos:</strong> Molécula mais moderna com preço mais acessível.</li>
-                <li><strong>Amome:</strong> Mometasona que combina eficácia e segurança.</li>
-                <li><strong>Alektos Derm:</strong> Hidratação, alívio da coceira e proteção com 8 ativos especiais.</li>
-            </ul>
-
-            <div class="materials-box">
-                <span class="materials-title">Materiais</span>
-                Amostras, Lâmina Baixa Interferência no SNC, Bloco Prescritores Concorrência.
+            <h3 class="section-title">AMOME (Caminho Livre)</h3>
+            <div class="alert-box" style="background:#e8f5e9; border-color:#4caf50;">
+                <strong>OPORTUNIDADE:</strong> Avamys e Nasonex estão sem força de vendas. BI enviado para conquistar os prescritores órfãos.
             </div>
+        </div>
+        <div class="materials-footer">
+            <strong>Mensagem:</strong> Alektos (molécula moderna/preço acessível) e Amome (mometasona que combina eficácia e segurança).
         </div>
     </div>
 
     <div class="product-card theme-resp">
         <div class="card-header">
-            <h2>RINOSORO</h2>
-            <span class="ciclo-badge">Líder de Mercado | Foco: JET</span>
+            <h2>FRANQUIA RESPIRATÓRIA</h2>
+            <span class="badge-equipe">EQUIPE: DINAMO, VITA E SINERGIA</span>
         </div>
         <div class="card-body">
-            <div class="tech-specs">
-                <div class="spec-item"><span class="spec-label">Objetivo</span>Retomar Pediatras e Otorrinos</div>
-                <div class="spec-item"><span class="spec-label">Diferencial</span>Única marca com portfólio completo</div>
-            </div>
-
-            <h3 class="section-title">Argumentos Técnicos Poderosos</h3>
+            <h3 class="section-title">RINOSORO (JET E XT)</h3>
             <ul>
-                <li><strong>Rinosoro JET:</strong> Fluidifica secreção, elimina muco, previne sintomas nasais.</li>
-                <li><strong>Rinosoro JET XT (O Grande Trunfo):</strong>
-                    <br>• Ação <strong>antibacteriana</strong> e preventiva contra IVAS (bactérias/alérgenos).
-                    <br>• Auxilia no <strong>pós-operatório</strong> de cirurgias nasais.
-                    <br>• Seguro para diabéticos e crianças.</li>
-                <li><strong>Usabilidade:</strong> Aplicação 360° e Bico Anatômico (melhor adesão).</li>
+                <li><strong>Única marca:</strong> Portfólio completo da prevenção ao tratamento.</li>
+                <li><strong>JET XT:</strong> Ação antibacteriana, prevenção de IVAS, pós-operatório. Seguro para bebês e diabéticos.</li>
+                <li><strong>Diferenciais:</strong> Aplicação 360°, jato suave e bico anatômico.</li>
             </ul>
 
-            <div class="materials-box">
-                <span class="materials-title">Materiais</span>
-                Lâmina comparativa alto volume, Lâmina família, Amostras de Rinosoro infantil SIC XT.
-            </div>
-        </div>
-    </div>
-
-    <div class="product-card theme-resp">
-        <div class="card-header">
-            <h2>DESCON e PREDSIM</h2>
-            <span class="ciclo-badge">Foco Prioritário: Otorrinos</span>
-        </div>
-        <div class="card-body">
-            
-            <div class="sales-pitch">
-                <span class="sales-pitch-title">COMBINAÇÃO PERFEITA (DESCON)</span>
-                "Doutor, ofereça a dupla descongestionante: Ação Tópica (Rinosoro) + Ação Sistêmica (Descon). O paciente respira melhor!"
-            </div>
-
-            <h3 class="section-title">Estratégia por Produto</h3>
+            <h3 class="section-title">DESCON (Foco de Crescimento)</h3>
             <ul>
-                <li><strong>Descon:</strong> Recuperar share frente ao <strong>Decongex</strong>. Marca foco de crescimento.</li>
-                <li><strong>Predsim:</strong> Líder da categoria. Conquistar prescrições de <strong>Prelone e Decadron</strong>.</li>
+                <li>Ataque ao líder <strong>Decongex</strong>. Foco em Pronto Atendimento e versão comprimidos.</li>
+                <li><strong>Ação Conjugada:</strong> Rinosoro (tópico) + Descon (sistêmico) para melhor respiração do paciente.</li>
             </ul>
 
-            <div class="materials-box">
-                <span class="materials-title">Materiais</span>
-                Descon: Lâmina diferenciais, Amostras (cp, xarope, gotas). Predsim: Amostras 10mg e 40mg.
-            </div>
+            <h3 class="section-title">PREDSIM</h3>
+            <ul>
+                <li><strong>Foco:</strong> Pediatras e Otorrinos. Blindar contra genéricos e Predni (Eurofarma).</li>
+                <li>Buscar médicos mixadores (que prescrevem Prednisona/Dexa/Beta).</li>
+            </ul>
+        </div>
+        <div class="materials-footer">
+            <strong>Materiais:</strong> Amostras SIC XT, Bloco de Mesa Decon, Amostras Predsim (10/20/40mg e Solução).
         </div>
     </div>
 
     <div class="product-card theme-sono">
         <div class="card-header">
             <h2>MELATONUM</h2>
-            <span class="ciclo-badge">Meta 2026: Crescer 14%</span>
+            <span class="badge-equipe">EQUIPE: TODAS</span>
         </div>
         <div class="card-body">
-            
-            <div class="alert-box">
-                <strong>⚠️ DISCURSO REATIVO (Risco Cardíaco)</strong>
-                <br>Se o médico perguntar sobre notícias de risco cardíaco:
-                <br>"Doutor, não existe relação causal. A matéria interpreta mal um estudo. O risco cardíaco vem do <strong>sono ruim</strong>, não da melatonina." (Só falar se perguntado!)
+            <div class="stat-grid">
+                <div class="stat-item"><span class="stat-val">+16%</span><span class="stat-label">Crescimento Família</span></div>
+                <div class="stat-item"><span class="stat-val">100%</span><span class="stat-label">Atingimento Cota</span></div>
             </div>
-
-            <h3 class="section-title">Posicionamento dos Produtos</h3>
+            <h3 class="section-title">MELATONUM MAX E COMPLETE</h3>
             <ul>
-                <li><strong>Melatonum MAX:</strong> Para doses maiores ou preferência líquida. <span class="highlight">1 gota = 0,21mg</span>.</li>
-                <li><strong>Melatonum COMPLETE:</strong> Para doses menores + Humor Irregular. Fórmula 4 em 1:
-                    <br>1. <strong>Melatonina:</strong> Qualidade do sono.
-                    <br>2. <strong>Triptofano:</strong> Reduz estresse e potencializa melatonina.
-                    <br>3. <strong>Magnésio:</strong> Relaxamento muscular.
-                    <br>4. <strong>B6:</strong> Produção de serotonina.
-                </li>
+                <li><strong>Melatonum Max:</strong> 1 gota = 0,21mg. Recomendado para doses maiores ou preferência por líquido.</li>
+                <li><strong>Melatonum Complete (4 em 1):</strong> Melatonina, Triptofano, Magnésio e B6. Foco em pacientes com humor irregular.</li>
+                <li><strong>Amostras:</strong> Volume aumentado para novos médicos (blindagem do mercado onde somos os únicos a visitar).</li>
             </ul>
-
-            <div class="materials-box">
-                <span class="materials-title">Materiais</span>
-                AGs de Melatonum Max e Melatonum Complete.
-            </div>
+        </div>
+        <div class="materials-footer">
+            <strong>Diretriz:</strong> Todo médico tem paciente que se beneficia, independente da especialidade.
         </div>
     </div>
 
